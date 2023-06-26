@@ -73,3 +73,20 @@ void Board::printPuzzle() {
     }
 
 }
+
+// Check if the puzzle is complete
+bool Board::checkPuzzle(){
+    int val = 0;
+
+    for(int i = 0; i < N; i++)
+        for(int j = 0; j < N; j++){
+            val = (*this)(i,j);
+            (*this)(i,j) = 0;
+            if(!feasible(*this, i, j, val)){
+                (*this)(i,j) = val;
+                return false;
+            }
+            (*this)(i,j) = val;
+        }
+    return true;
+}
