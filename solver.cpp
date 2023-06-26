@@ -99,3 +99,13 @@ void Board::clearPuzzle(){
             if (!checkImmutable(i,j))
                 (*this)(i,j) = 0;
 }
+
+//Check if value is within size range of puzzle
+//i.e. 1-9 on a 9x9 puzzle
+bool Board::inBounds(int val){
+    if ((val > 0) && (val <= N)){
+        return true;
+    } else {
+        return false;
+    }
+}
