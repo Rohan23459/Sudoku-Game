@@ -18,7 +18,6 @@ Implement unit testing functions
 
 using namespace std;
 
-//This function will check wether we filled correct till yet
 // Unit test for comparing functions
 // Specify size of puzzle, numbers of filled in values (number of observations
 // Number of repeats and whether verbose
@@ -35,9 +34,11 @@ void unitTest(int size, int nobs, int ntimes, bool verbose){
 
         auto t = measure<std::chrono::nanoseconds>::execution(solve, 
                                                               board, 0, 0);
+
         auto t2 = measure<std::chrono::nanoseconds>::execution(DR, board);
 
-        //Print output if verbose
+        //check for the verbose exists
+                
         if (verbose)
             cout << "Backtrace solved in " << t << " ns." << \
         " Random projections solved in " << t2 << " ns." << endl;
