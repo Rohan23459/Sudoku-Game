@@ -164,3 +164,32 @@ bool Board::feasibleUser(int row, int col, int val){
     }
     return isfeasible;
 }
+
+
+// Helper function for solve: checks to see if candidate is feasible or not
+bool feasible(Board &board, int row, int col, int val){
+    int N = board.getSize();
+    assert(row < N);
+    assert(col < N);
+    int blockSize = (int)sqrt(N);
+
+    // See if used yet in row
+    for(int j = 0; j < N; j++)
+        if(board(row,j) == val) return false;
+
+    // See if used yet in col
+    for(int i = 0; i < N; i++)
+        if(board(i,col) == val) return false;
+
+    // coordinates of upper-left hand corner of block that (row,col) occupies
+    int blockRow = blockSize*(row/blockSize);
+    int blockCol = blockSize*(col/blockSize);
+
+    // See if used yet in block
+    for(int i = 0; i < blockSize; i++)
+        for(int j = 0; j < blockSize; j++)
+            if(board(blockRow + i,blockCol + j) == val)
+                return false;
+
+     return true;
+}
