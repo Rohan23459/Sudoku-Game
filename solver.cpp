@@ -90,3 +90,12 @@ bool Board::checkPuzzle(){
         }
     return true;
 }
+
+//Empty all cells that are not immutable
+// immutable = prefilled by the randomly generated puzzle
+void Board::clearPuzzle(){
+    for(int i = 0; i < N; i++)
+        for(int j = 0; j < N; j++)
+            if (!checkImmutable(i,j))
+                (*this)(i,j) = 0;
+}
