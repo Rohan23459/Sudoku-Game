@@ -19,7 +19,6 @@ int main(int argc, char **argv){
   Board board = generatePuzzle(n,20);
   cout << "now!\n";
   //  board.printPuzzle();
-  //cout << "\n==================================\n";
 
   Board matt = DR(board);
 
@@ -28,8 +27,6 @@ int main(int argc, char **argv){
     cout << "DR Failed to Solve" << endl;
   else
     matt.printPuzzle();
-  
-  //cout << "\n==================================\n";
 
   //solve(board,0,0);
   //board.printPuzzle();
